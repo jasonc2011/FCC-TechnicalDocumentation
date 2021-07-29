@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="dist/style.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&family=Trirong:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <nav id="navbar">
+            <header id="toc-header">CSS Flexbox</header>
+            <div class="nav-div"><a href="#Basics" class="nav-link">Basics</a></div>
+            <div class="nav-div"><a href="#Main_Axis_and_Cross_Axis" class="nav-link">Main Axis and Cross Axis</a></div>
+            <div class="nav-div"><a href="#Justify_Content" class="nav-link">Justify Content</a></div>
+            <div class="nav-div"><a href="#Positioning_Single_Items" class="nav-link">Positioning Single Items</a></div>
+            <div class="nav-div"><a href="#The_Flex_Property" class="nav-link">The Flex Property</a></div>
+            <div class="nav-div"><a href="#Aligning_Items_on_Cross_Axis" class="nav-link">Aligning Items on Cross Axis</a></div>
+            <div class="nav-div"><a href="#Flex_Direction_Column" class="nav-link">Flex Direction Column</a></div>
+            <div class="nav-div"><a href="#Wrapping" class="nav-link">Wrapping</a></div>
+            <div class="nav-div"><a href="#Order" class="nav-link">Order</a></div>
+        </nav>
+        <main id="main-doc">
+            <section class="main-section" id="Basics">
+                <header>Basics</header>
+                <p>At basic level, Container and its items</p>
+                <p>basic container class:</p>
+                <pre class="code-block"><code>
+.container {
+    display: flex; //will layout horizontally by default
+}
+                </code></pre>
+            </section>
+            <section class="main-section" id="Main_Axis_and_Cross_Axis">
+                <header>Main Axis and Cross Axis</header>
+                <p>will lay out horizontally by default... so Main Axis is from left to right, and Cross Axis is top to bottom.</p>
+                <p>we can swap this by changing the class to:</p>
+                <pre class="code-block"><code>
+ .container { 
+    display: flex; 
+    flex-direction: column; //will layout vertically
+}
+                </code></pre>
+                <p> ***this makes Main Axis top to bottom and Cross Axis left to right*** </p>
+            </section>
+            <section class="main-section" id="Justify_Content">
+                <header>Justify Content</header>
+                <p>used for aligning content on MAIN AXIS</p>
+                <p>use property justify-content:</p>
+                <ul>
+                    <li><code>justify-content: flex-start;</code> justifies to start of flex container - DEFAULT</li>
+                    <li><code>justify-content: flex-end;</code> justifies to end of flex container</li>
+                    <li><code>justify-content: center;</code> centers content</li>
+                    <li><code>justify-content: space-around;</code> even space around items, half size at beginning and end of container</li>
+                    <li><code>justify-content: space-between;</code> even space around items, but first and last items have no space at beginning and end of container</li>
+                    <li><code>justify-content: space-around;</code> even space around items, including beginning and end of container</li>
+                </ul>
+                <p>    **  This sets the justification for the container as a whole -- all child items.</p>
+            </section>
+            <section class="main-section" id="Positioning_Single_Items">
+                <header>Positioning Single Items</header>
+                <pre class="code-block"><code>
+.targetedItem {
+    margin-left: auto; //will move item and all following items as far right as possible
+    margin-right: auto; //will move item and all preceeding items as far left as possible
+}
+                 </code></pre>
+                <p>can be used in conjunction with justify-content in order to create more complex layouts</p>
+            </section>
+            <section class="main-section" id="The_Flex_Property">
+                <header>The Flex Property</header>
+                <p>allows for responsive resizing of items in the container</p>
+                <pre class="code-block"><code>
+.targetedItem(S){
+    flex: 1; //will grow all items evenly across container
+                    
+    //actually a shorthand for the following 3 properties: (setting a flex of 1 is also flex: 1 1 0)
+    flex-grow: 1; //how much extra space should be allocated to the items.  multiple items with 1 will divide space evenly.  
+                  //Item at 1, item at 2, the 2 will get twice as much. items with flex-grow: 0, get nothing.
+    flex-shrink: 1; //rate at which items shrink.  in proportion... like grow.  
+    flex-basis: 200px; //sets base width of the element.  items will stay at that width if enough space, will flex smaller if needed.
+    flex-basis: 50%; //can also be in percent of width of flex container.
+                    
+}
+                </code></pre>
+            </section>
+            <section class="main-section" id="Aligning_Items_on_Cross_Axis">
+                <header>Aligning Items on Cross Axis</header>
+                <p>by default, items stretch across cross axis</p>
+                <ul>
+                    <li><code>align-items: stretch;</code> DEFAULT VALUE, items stretch across cross axis</li>
+                    <li><code>align-items: flex-start;</code> items pushed to start of container, take up as much space as needed to display content</li>
+                    <li><code>align-items: flex-end;</code> items pushed to end of container, take up as much space as needed to display content/li>
+                    <li><code>align-items: flex-center;</code> items centered in container on cross axis, only take up as much space as needed to display content</li>
+                </ul>
+                <p>For aligning all items in a container.</p>
+                <p>to target single items, use align-self</p>
+                <pre class="code-block"><code>
+.targetedItem(S) { 
+    align-self: flex-start; 
+}
+                </code></pre>
+            </section>
+            <section class="main-section" id="Flex_Direction_Column">
+                <header>Flex Direction Column</header>
+                <p>all the exact same properties as above, but note that the Main Axis is TOP TO BOTTOM and Cross Axis is LEFT TO RIGHT.</p>                
+            </section>
+            <section class="main-section" id="Wrapping">
+                <header>Wrapping</header>
+                <p>if you give an explicit width to the items in the container, it will scale down in size by default when the container is too small to display full size..</p>
+                <p>flex-wrap changes this behavior:</p>
+                <pre class="code-block"><code>
+.container { 
+    flex-wrap: nowrap; //DEFAULT, allows items to flex smaller in size as needed, but does not stretch larger.
+    flex-wrap: wrap; //enforces explicit size... does not allow items to flex in size.  items will wrap to next row (cross axis) if container isnt wide enough.
+}
+                </code></pre>
+            </section>
+            <section class="main-section" id="Order">
+                <header>Order</header>
+                <p>source order independance... using the order property, we can change the order of contained items, regardless of their order in the source code.</p>
+                <pre class="code-block"><code>
+&ltdiv&gt
+    &ltdiv class="container"&gt
+    &ltdiv class="item1"&gt1 Home&lt/div&gt
+    &ltdiv class="item2"&gt2 Search&lt/div&gt
+    &ltdiv class="item3"&gt3 Logout&lt/div&gt
+&lt/div&gt
+                    
+.item2 {
+    order: 0; //DEFAULT VALUE
+    order: 1; //would place this targeted item at the END of the flexbox regardless of order in html.  
+              //At end, because 1 comes after any items with default value (0)
+    order: -1; //would place this targeted item at the START of the flexbox regardless of order in html.  
+               //At start, because -1 comes before any items with default value (0)
+                    
+}
+                </code></pre>
+            </section>
+        </main>
+    </div>
+  <script type="text/javascript" src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+</html>
